@@ -1,4 +1,4 @@
-var pool = require('./db.config.js');
+var pool = require('./db.config.js').pool;
 
 pool.connect()
   .then(client => {
