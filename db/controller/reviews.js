@@ -16,7 +16,7 @@ var reviews = {
     })
   },
   getReviewsAndPhotos: (id, order, count, cb) => {
-    var sql = sql = `SELECT * FROM reviews INNER JOIN review_photos ON reviews.review_id = review_photos.review_id AND reviews.product_id = ${id}`;
+    var sql = `SELECT * FROM reviews, photos WHERE reviews.product_id = ${id} AND reviews.review_id = photos.review_id`;
     if (order) {
       let orderBy;
       if (order === 'newest') {
@@ -27,7 +27,7 @@ var reviews = {
         orderBy = 'helpfulness';
       }
       if (orderBy) {
-        sql+= = ` ORDER
+        sql+= ` ORDER
         BY ${orderBy} desc`;
       }
     }
@@ -42,6 +42,9 @@ var reviews = {
         cb(null, data);
       }
     })
+  },
+  getProductMetaData: (id, cb) => {
+
   }
 }
 
