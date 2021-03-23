@@ -9,13 +9,13 @@ var productReviewCallbacks = {
     var reviewResult;
     var reviewIds;
     var reviewPhotos;
-    if (!req.query.id) {
+    if (!req.body.id) {
       res.sendStatus(404)
     } else {
-      reviews.getAllFromProduct(req.query.id)
+      reviews.getAllFromProduct(req.body.id)
         .then(result => {
           if(result.rowCount === 0) {
-            res.sendStats(404);
+            res.sendStatus(404);
           } else {
             reviewResult = result.rows;
             reviewIds = reviewResult.map(review => {
@@ -39,17 +39,17 @@ var productReviewCallbacks = {
     }
   },
   getReviewsWithPhotos: (req, res, next) => {
-    if (!req.query.id) {
+    if (!req.body.id) {
       res.sendStatus(422);
     } else {
-      reviews.getReviewsAndPhotos(req.query.id, req.query.sort, req.query.count, (err, data) => {
+      reviews.getReviewsAndPhotos(req.body.id, req.body.sort, req.body.count, (err, data) => {
         if (err) {
           res.status(500).json(err);
         } else {
           if (data.rows.length === 0) {
             res.json([]);
           } else {
-            var formattedRes = utility.formatReviewsForResponse(data.rows, req.query.id, req.query.page = 1, req.query.count = 5);
+            var formattedRes = utility.formatReviewsForResponse(data.rows, req.body.id, req.body.page = 1, req.body.count = 5);
             res.send(formattedRes);
           }
         }
@@ -57,10 +57,10 @@ var productReviewCallbacks = {
     }
   },
   getProductMetaData: (req, res, next) => {
-    if (!req.query.id) {
+    if (!req.body.id) {
       res.sendStatus(422);
     } else {
-    reviews.getProductMetaData(req.query.id, (err, data) => {
+    reviews.getProductMetaData(req.body.id, (err, data) => {
       if (err) {
         res.status(500).json(err);
       } else {
@@ -75,15 +75,21 @@ var productReviewCallbacks = {
     }
   },
   postReview: (req, res, next) => {
-    const {query} = req.body;
-    if (!query.product_id || !query.rating || !query.summary || !query.body || !query.recommend || !query.name || !query.email || !query.photos || !query.characteristics) {
-      res.sendStats(422);
+    const {body} = req;
+    //|| !body.rating || !body.summary || !body.body || !body.recommend || !body.name || !body.email || !body.photos || !body.characteristics
+    if (!body.product_id) {
+      res.sendStatus(422);
     } else {
-      //format photos
-
-      //format characteristics
-
-
+      let postArray = utility.formatReviewPostArray(body);
+      reviews.postReview(postArray, (err, result) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.json(result);
+        }
+      })
+      //using returned review_id, post photos
+      //format characteristic
     }
   }
 }
