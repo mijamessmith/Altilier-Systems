@@ -40,31 +40,57 @@ var formatReviewsForResponse = (reviews, id, page, count) => {
   return results;
 }
 
-var sortReviews = (order) => {
-  if (order === 'newest') {
+var formatMetadataResponse = (cReviews, id) => {
+  let result = {}
+  result.product_id = id
 
+}
+
+var formatCharacteristics = (c) => {
+
+  var averageCharRatings = (c) => {
+    let ratings = {}
+    for (let r of c) {
+      if (ratings[r.name] === undefined) {
+        ratings[r.name] = {};
+        ratings[r.name].id = r.characteristic_id;
+        ratings[r.name].value = [];
+        ratings[r.name].value.push(r.rating);
+        //do other work
+        r.recommend === '0' ? output.recommended["0"]++ : output.recommended["1"]++;
+        if (output.ratings[r.rating] === undefined) {
+          output.ratings[r.rating] = 0
+        } else {
+          output.ratings[r.rating]++;
+        }
+      } else {
+        ratings[r.name].value.push(r.rating);
+        r.recommend === '0' ? output.recommended["0"]++ : output.recommended["1"]++;
+        if (output.ratings[r.rating] === undefined) {
+          output.ratings[r.rating] = 0
+        } else {
+          output.ratings[r.rating]++;
+        }
+      }
+    }
+    for (let char in ratings) {
+      ratings[char].value = String(
+        (ratings[char].value.reduce((a, b) => a + b, 0)) / ratings[char].value.length
+      )
+    }
+    return ratings;
   }
+  var output = {};
+  output.recommended = {
+    0: 0,
+    1: 0,
+  };
+  output.ratings = {};
+  output.characteristics = averageCharRatings(c);
+  return output;
 }
 
-var sortByDate = (reviews) => {
-  reviews.sort((a, b) => {
-    return Date.parse(a.date) < Date.parse(b.date);
-  })
 
-
-  var dates = [];
-  for (let reviews of reviews) {
-    dates.push(review.date);
-  }
-  dates.sort()
-}
-
-var sortByHelpfullness = (reviews) => {
-
-}
-
-var sortByRelevant = (reviews) => {
-
-}
 
 module.exports.formatReviewsForResponse = formatReviewsForResponse;
+module.exports.formatCharacteristics = formatCharacteristics;

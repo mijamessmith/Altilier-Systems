@@ -1,6 +1,6 @@
 var reviews = require('../../db/controller/reviews.js').reviews;
 var photos = require('../../db/controller/photos.js').photos;
-var formatReviewsForResponse = require('./utility.js').formatReviewsForResponse;
+var utility = require('./utility.js');
 
 var promise = require('bluebird');
 
@@ -49,7 +49,7 @@ var productReviewCallbacks = {
           if (data.rows.length === 0) {
             res.json([]);
           } else {
-            var formattedRes = formatReviewsForResponse(data.rows, req.query.id, req.query.page = 1, req.query.count = 5);
+            var formattedRes = utility.formatReviewsForResponse(data.rows, req.query.id, req.query.page = 1, req.query.count = 5);
             res.send(formattedRes);
           }
         }
@@ -60,6 +60,29 @@ var productReviewCallbacks = {
     if (!req.query.id) {
       res.sendStatus(422);
     } else {
+    reviews.getProductMetaData(req.query.id, (err, data) => {
+      if (err) {
+        res.status(500).json(err);
+      } else {
+        if (data.rows.length === 0) {
+          res.json([]);
+        } else {
+          let formattedRes = utility.formatCharacteristics(data.rows);
+          res.send(formattedRes);
+        }
+      }
+    })
+    }
+  },
+  postReview: (req, res, next) => {
+    const {query} = req.body;
+    if (!query.product_id || !query.rating || !query.summary || !query.body || !query.recommend || !query.name || !query.email || !query.photos || !query.characteristics) {
+      res.sendStats(422);
+    } else {
+      //format photos
+
+      //format characteristics
+
 
     }
   }

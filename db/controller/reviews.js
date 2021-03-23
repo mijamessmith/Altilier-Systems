@@ -44,7 +44,41 @@ var reviews = {
     })
   },
   getProductMetaData: (id, cb) => {
+    var sql = `SELECT reviews.rating, reviews.recommend, characteristics.name, characteristics.characteristic_id, c_reviews.rating
+    FROM
+    c_reviews
+    INNER JOIN characteristics ON
+    c_reviews.characteristic_id = characteristics.characteristic_id
+    INNER JOIN reviews ON c_reviews.review_id = reviews.review_id
+    WHERE
+    characteristics.product_id = ${id}`;
 
+    pool.query(sql, (err, data) => {
+      if (err) {
+        cb(err, null);
+      } else {
+        cb(null, data);
+      }
+    })
+  },
+  postReview: (review, cb) => {
+//(${review.product_id}, ${review.rating}, ${review.date}, ${review.summary}, ${review.body}, ${review.recommend}, ${review.reported}, ${review.name}, ${review.email}, ${review.response}, ${review.helpfulness})
+    review.reported = 0;
+    review.helpfulness = 0;
+    review.date = new Date().toISOString();
+    review.response = null;
+    review.recommend = true ? review.recommend = "true" : review.recommend = "false";
+
+    var values = review.values();
+    var sql = `INSERT INTO reviews (product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness) VALUES ($1, $2, $3, $4, $5, $6 ,$7, $8, $9, $10, $11) RETURN *`;
+
+    pool.query(sql, values, (err, res) => {
+      if (err) {
+        cb(err, null);
+      } else {
+        cb(null, res)
+      }
+    })
   }
 }
 

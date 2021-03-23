@@ -7,5 +7,6 @@ var app = express();
 //app.get('/reviews', productReviewCallbacks.getReviewsByProduct);
 app.get('/reviews', productReviewCallbacks.getReviewsWithPhotos);
 app.get('/reviews/photos', reviewPhotoCallbacks.getAllReviewPhotos);
+app.get('/reviews/meta', productReviewCallbacks.getProductMetaData);
 
 app.listen(3000, () => console.log('listening on 3000'));
