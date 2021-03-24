@@ -1,5 +1,4 @@
 var pool = require('../db.config.js').pool;
-var helper = require('./helper.js');
 
 var reviews = {
   getAllFromProduct: (id) => {
@@ -63,10 +62,7 @@ var reviews = {
     })
   },
   postReview: (review, cb) => {
-//(${review.product_id}, ${review.rating}, ${review.date}, ${review.summary}, ${review.body}, ${review.recommend}, ${review.reported}, ${review.name}, ${review.email}, ${review.response}, ${review.helpfulness})
-
-   // var values = helper.formatReviewPostArray(review);
-    var sql = `INSERT INTO reviews (product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness) VALUES ($1, $2, $3, $4, $5, $6 ,$7, $8, $9, $10, $11) RETURNING *`;
+    var sql = `INSERT INTO reviews (product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness) VALUES ( $1, $2, $3, $4, $5, $6 ,$7, $8, $9, $10, $11) RETURNING *`;
 
     pool.query(sql, review, (err, res) => {
       if (err) {
