@@ -40,10 +40,10 @@ var productReviewCallbacks = {
     }
   },
   getReviewsWithPhotos: (req, res, next) => {
-    if (!req.body.id) {
+    if (!req.query.id) {
       res.sendStatus(422);
     } else {
-      reviews.getReviewsAndPhotos(req.body.id, req.body.sort, req.body.count, (err, data) => {
+      reviews.getReviewsAndPhotos(req.query.id, req.query.sort, req.query.count, (err, data) => {
         if (err) {
           res.status(500).json(err);
         } else {

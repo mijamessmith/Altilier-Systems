@@ -95,3 +95,5 @@ GROUP BY reviews.rating, characteristics.name;
 SELECT characteristics.name, AVG(c_reviews.rating) FROM characteristics INNER JOIN c_reviews ON characteristics.characteristic_id = c_reviews.characteristic_id AND characteristics.characteristic_id = 1042 GROUP BY characteristics.name;
 
 ALTER SEQUENCE photos_id_seq RESTART WITH 10000000;
+
+ALTER SEQUENCE reviews_review_id_seq RESTART WITH 5777923;
