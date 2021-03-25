@@ -58,10 +58,10 @@ var productReviewCallbacks = {
     }
   },
   getProductMetaData: (req, res, next) => {
-    if (!req.body.id) {
+    if (!req.query.id) {
       res.sendStatus(422);
     } else {
-    reviews.getProductMetaData(req.body.id, (err, data) => {
+    reviews.getProductMetaData(req.query.id, (err, data) => {
       if (err) {
         res.status(500).json(err);
       } else {
