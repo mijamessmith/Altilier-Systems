@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "start": "forever start server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server/server.js",
     "inspect": "nodemon --inspect-brk server/server.js"
