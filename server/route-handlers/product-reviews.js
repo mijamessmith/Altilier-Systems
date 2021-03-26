@@ -91,7 +91,6 @@ var productReviewCallbacks = {
           if (body.photos.length > 0) {
             photos.postPhoto(reviewId, body.photos[0], (err, result) => {
               if (err) {
-                console.log(err);
                 res.status(500).send(err)
               } else {
                 let maxCount = Object.keys(body.characteristics).length;

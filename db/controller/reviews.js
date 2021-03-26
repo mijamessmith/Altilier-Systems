@@ -10,7 +10,6 @@ var reviews = {
         resolve(res);
       })
       .catch(err => {
-        console.log(err.stack)
         reject(err);
       })
     })
@@ -67,7 +66,6 @@ var reviews = {
     pool.query(sql, review, (err, res) => {
       if (err) {
         cb(err, null);
-        console.log(err);
       } else {
         cb(null, res)
       }

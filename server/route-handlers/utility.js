@@ -36,7 +36,6 @@ var formatReviewsForResponse = (reviews, id, page, count) => {
     ]
     results.push(obj);
   }
-  console.log(results);
   return results;
 }
 

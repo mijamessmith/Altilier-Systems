@@ -11,7 +11,7 @@ var reviewPhotoCallbacks = {
           res.json(result);
         })
         .catch(err => {
-          console.log(err);
+          res.send(err);
         })
     }
   }
