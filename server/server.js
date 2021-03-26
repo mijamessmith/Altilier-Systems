@@ -21,7 +21,7 @@ app.get('/reviews/photos', reviewPhotoCallbacks.getAllReviewPhotos);
 app.get('/reviews/meta', productReviewCallbacks.getProductMetaData);
 
 app.get('/loaderio-4a0dd7e284c785351e1580dab62a1dfb/', (req, res) => {
-  res.send('./loaderio-4a0dd7e284c785351e1580dab62a1dfb.txt')
+  res.send('loaderio-4a0dd7e284c785351e1580dab62a1dfb')
 })
 
 app.listen(80, () => console.log('listening on 80'));
