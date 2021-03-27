@@ -2,3 +2,4 @@ db/db.config.js
 node_modules
 sdc-postgres-key.pem
 review-api-key.pem
+newrelic_agent.log

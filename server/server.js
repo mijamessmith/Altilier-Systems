@@ -7,7 +7,6 @@ var reviewPhotoCallbacks = require('./route-handlers/review-photos.js').reviewPh
 var app = express();
 
 var test = (req, res) => {
-  console.log(req.body);
   res.send("test valid");
 }
 
