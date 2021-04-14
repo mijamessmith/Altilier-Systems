@@ -4,28 +4,25 @@
 1. [DESCRIPTION](#description)
 2. [INSTALLATION](#installation)
 3. [USAGE](#usage)
-- LICENSE
+4. [LICENSE](#license)
 
-## DESCRIPTION <a name="description"></a>
+### DESCRIPTION <a name="description"></a>
+Alitier provides several micro-serivices that serve as the robust backend to a consumer review module for a eccomerce, retail site. Services include
+- API Server built on Express.js in Node.js
+- DB Controller built in Node.js
+- PostgreSQL DB and server
+- Nginx Loadbalancing server
+- New Relic, Loader.io, and jest testing services
 
-## INSTALLATION <a name="installation"></a>
+Together these services serve to handle CRUD requests as related to over 10 million product reviews and product metadata of over 20 million records.
 
-## USAGE <a name="usage"></a>
+### INSTALLATION <a name="installation"></a>
+   1. Single Instance, Local Installation
+   - Local Instances provide limited context without a properly seeded database, but will at least provide some context to the working of the API
+   ###### Within the root dir of the cloned repo, run npm install in your terminal to install and npm packages
+   ###### If you have not already, download, install, and run an instance of [postgresql](https://www.postgresql.org/docs/9.3/tutorial-install.html)
+   2. Multi-Server Set-up
+### USAGE <a name="usage"></a>
 
-# Table of contents
-1. [Introduction](#introduction)
-2. [Some paragraph](#paragraph1)
-    1. [Sub paragraph](#subparagraph1)
-3. [Another paragraph](#paragraph2)
-
-## This is the introduction <a name="introduction"></a>
-Some introduction text, formatted in heading 2 style
-
-## Some paragraph <a name="paragraph1"></a>
-The first paragraph text
-
-### Sub paragraph <a name="subparagraph1"></a>
-This is a sub paragraph, formatted in heading 3 style
-
-## Another paragraph <a name="paragraph2"></a>
-The second paragraph text
+### LICENSE <a name="license"></a>
+This project is unlicensed
