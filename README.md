@@ -23,7 +23,8 @@ Together these services serve to handle CRUD requests as related to over 10 mill
    ###### If you have not already, download, install, and run an instance of [postgresql](https://www.postgresql.org/docs/9.3/tutorial-install.html)
    ###### cd into db and create a new file titled "db.config.js". The file should look like so:
 
-   ```const {Pool, Client} = require('pg');
+```
+      const {Pool, Client} = require('pg');
       const pool = new Pool({
         user: <'your_postgres_username'>,
         host: 'localhost',
@@ -31,7 +32,8 @@ Together these services serve to handle CRUD requests as related to over 10 mill
         password: <'your_database_password'>,
         port: 5432,
         max: 30
-      })```
+      })
+```
 
 module.exports.pool = pool;
    2. Multi-Server Set-up
