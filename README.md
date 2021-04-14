@@ -3,14 +3,12 @@
 ## TABLE OF CONTENTS
 - [DESCRIPTION] (#description)
 - [INSTALLATION] (#installation)
-- [CONTRIBUTING] (#installation)
+- [CONTRIBUTING] (#contributing)
 - LICENSE
 
-<a name="description"/>
-## DESCRIPTION
+## DESCRIPTION <a name="description"></a>
 
-<a name="installation"/>
-## INSTALLATION
+## INSTALLATION <a name="installation"></a>
 
-## CONTRIBUTING
+## CONTRIBUTING <a name="contributing"></a>
 
