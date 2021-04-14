@@ -18,9 +18,22 @@ Together these services serve to handle CRUD requests as related to over 10 mill
 
 ### INSTALLATION <a name="installation"></a>
    1. Single Instance, Local Installation
-   - Local Instances provide limited context without a properly seeded database, but will at least provide some context to the working of the API
+  Local Instances provide limited context without a properly seeded database, but will at least provide some context to the working of the API
    ###### Within the root dir of the cloned repo, run npm install in your terminal to install and npm packages
    ###### If you have not already, download, install, and run an instance of [postgresql](https://www.postgresql.org/docs/9.3/tutorial-install.html)
+   ###### cd into db and create a new file titled "db.config.js". The file should look like so:
+
+   ```const {Pool, Client} = require('pg');
+      const pool = new Pool({
+        user: <'your_postgres_username'>,
+        host: 'localhost',
+        database: <'your_database_name'>,
+        password: <'your_database_password'>,
+        port: 5432,
+        max: 30
+      })```
+
+module.exports.pool = pool;
    2. Multi-Server Set-up
 ### USAGE <a name="usage"></a>
 
