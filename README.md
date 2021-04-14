@@ -1,16 +1,16 @@
 # ALTILIER BACKEND SERVICE
 
 ## TABLE OF CONTENTS
-- DESCRIPTION(#description)
-- INSTALLATION(#installation)
-- CONTRIBUTING(#contributing)
+1. [DESCRIPTION](#description)
+2. [INSTALLATION](#installation)
+3. [USAGE](#usage)
 - LICENSE
 
 ## DESCRIPTION <a name="description"></a>
 
 ## INSTALLATION <a name="installation"></a>
 
-## CONTRIBUTING <a name="contributing"></a>
+## USAGE <a name="usage"></a>
 
 # Table of contents
 1. [Introduction](#introduction)
