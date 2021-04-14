@@ -32,7 +32,6 @@ var productReviewCallbacks = {
         })
         .then(photos => {
           reviewPhotos = photos;
-
         })
         .catch(err => {
           console.log(err);
