@@ -21,7 +21,7 @@ Together these services serve to handle CRUD requests as related to over 10 mill
 ### GOALS <a name="goals"></a>
 Altilier replaces a pre-existing API that was only able to handle serveral requests per second.
 I was asked to
--Scale my new microservices to handle up to 1000 requests per second
+-Scale my new microservices to handle up to 750 requests per second while deployed
 -Maintain an error rate of <1%
 -Provide ETL services for serveral unreliable cvs files with over 20 million rows
 
