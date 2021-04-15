@@ -30,7 +30,7 @@ My Loadbalancer was tested using several metrics and tools, including CloudWatch
 
 Without going over 3 APIs on different EC2 instances with Nginx sitting in front, I was able to reach a stable rate of 750 rps for complex query requests, including multi table join requests for aggregate metadata:
 ###### Loader.io output
-<img src="https://github.com/JacobWPeterson/Atelier/blob/master/LoaderIOExample.png" alt="loader.io results" width=775px />
+<img src="https://github.com/mijamessmith/Altilier-Backend-Service/blob/master/assets/images/loader_test.png" alt="loader.io results" width=775px />
 
 ### INSTALLATION <a name="installation"></a>
   Local Installation
