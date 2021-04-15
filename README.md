@@ -29,10 +29,16 @@ I was asked to
 
 
 ### INSTALLATION <a name="installation"></a>
-   1. Single Instance, Local Installation
+  Local Installation
   Local Instances provide limited context without a properly seeded database, but will at least provide some context to the working of the API
-   ###### Within the root dir of the cloned repo, run npm install in your terminal to install and npm packages
+   ###### Within the root dir of the cloned repo, run 'npm install' in your terminal to install and npm packages
    ###### If you have not already, download, install, and run an instance of [postgresql](https://www.postgresql.org/docs/9.3/tutorial-install.html)
+   ###### Using the schema.sql file, set up the database within your terminal, running
+   ```
+    psql postgres
+    \c some_database
+    \i \path\TO\schema.sql
+   ```
    ###### cd into db and create a new file titled "db.config.js". The file should look like so:
 
 ```
@@ -40,13 +46,15 @@ I was asked to
       const pool = new Pool({
         user: <'your_postgres_username'>,
         host: 'localhost',
-        database: <'your_database_name'>,
+        database: <'reviews'>,
         password: <'your_database_password'>,
         port: 5432,
         max: 30
       })
       module.exports.pool = pool;
 ```
+   ###### By default the api server will run on port 80 locally. If this is not your desired port number, alter the server.js file within the server dir.
+   ###### Run 'npm run server' to start the api server
 
 ### USAGE <a name="usage"></a>
 
