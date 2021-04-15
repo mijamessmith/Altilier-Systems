@@ -26,7 +26,11 @@ I was asked to
 -Provide ETL services for serveral unreliable cvs files with over 20 million rows
 
 ### METRICS <a name="metrics"></a>
+My Loadbalancer was tested using several metrics and tools, including CloudWatch on AWS, Loader.io, New Relic, and for local development, k6
 
+Without going over 3 APIs on different EC2 instances with Nginx sitting in front, I was able to reach a stable rate of 750 rps for complex query requests, including multi table join requests for aggregate metadata:
+###### Loader.io output
+<img src="https://github.com/JacobWPeterson/Atelier/blob/master/LoaderIOExample.png" alt="loader.io results" width=775px />
 
 ### INSTALLATION <a name="installation"></a>
   Local Installation
